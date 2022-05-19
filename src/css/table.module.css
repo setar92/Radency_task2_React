@@ -1,0 +1,116 @@
+body {
+    font-family:    Arial, Helvetica, sans-serif;
+}
+
+pre {
+    font-family:    Arial, Helvetica, sans-serif;
+}
+
+.table {
+    font-size: 15pt;
+    width: 80%;
+    margin: 30px auto; 
+    padding: 4px;
+    font-size: 15pt;
+}
+.table pre {
+    display: inline-block; 
+    padding-left: 6px;
+    padding-right: 6px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #e8eaf6;
+    height: 50px;
+    line-height: 50px;   
+}
+.emptySpace {
+    min-height: 10px;
+}
+
+.mainDiv{
+    height: 50px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    color: #747780;
+}
+
+.table pre:first-child{
+    min-width: 3%;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+.table pre:last-child{
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.table pre:nth-child(2){
+    width: 16%;
+    color: #25252d;
+}
+.table pre:nth-child(3){
+    width: 11%;
+}
+.table pre:nth-child(4){
+    width: 13%;
+}
+.table pre:nth-child(5){
+    width: 27%;
+    
+}
+.table pre:nth-child(6){
+    width: 18%;
+}
+.table pre:nth-child(n+7){
+    display: flex;
+    align-items: center;
+    min-width: 3%;
+    padding-left: 0;
+    
+}
+
+.btnCreate {
+    border-radius: 5px;
+    font-size: large;
+    padding: 3px 16px;
+    float: right;
+    margin-top: 12px;
+   
+}
+
+/* Archive */
+.archive { 
+    border-radius: 10px;
+    margin-top: 50px;
+   
+}
+.archive h1{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.archive.active{
+    display: none;
+}
+
+/* btn show default notes */
+.btnDefault {
+    border-radius: 5px;
+    font-size: large;
+    padding: 3px 16px;
+    margin-top: 12px;
+    display: block;
+}
+.defaultNotes {
+    width: 80%;
+    margin: 20px auto;
+    height: 30%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+

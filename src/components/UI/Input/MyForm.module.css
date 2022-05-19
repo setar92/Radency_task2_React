@@ -1,0 +1,58 @@
+.myForm {
+    border-radius: 8px;
+    display: block;
+    font-size: larger;
+    padding-bottom: auto;    
+}
+.myForm p {
+    display: block;
+    margin-top: 10px;
+}
+.myForm p label{
+    width: 30%;
+    display: inline-block;
+    text-align: center; 
+}
+.myForm p:nth-child(2) label{
+    vertical-align: top;
+}
+.myForm p input{
+    width: 65%;
+    font-size: large;
+}
+.myForm p textarea{
+    width: 65%;
+    font-size: large;
+}
+
+.myForm button {
+    background-color: #ececec;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    width: 18%;
+    font-weight: bold;
+    margin-right: 20px;
+    font-size:large;
+}
+button:hover {
+    background-color: darkgray;
+    border-radius: 5px;
+    cursor: pointer;    
+}
+.myForm select {
+    padding: 6px;
+    font-size: large;
+    border-radius: 6px;
+}
+
+.myForm div {
+    color: red;
+    font-size:medium;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
