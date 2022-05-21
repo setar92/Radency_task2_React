@@ -7,18 +7,27 @@ import MyModal from './UI/Modal/MyModal'
 import MyForm from "./UI/Input/MyForm";
 import Archive from "./Archive";
 import DefaultNotes from "./default.notes";
+import { NoteProvider } from "./ContextNote";
+import HeaderArchive from "./UI/HeaderForArchiveCount"
+
+
+function getFromStorage() {
+    const notesStorage = localStorage.getItem('Notes');
+    if (notesStorage) {
+        return JSON.parse(notesStorage);
+    } else {
+        return []
+    }
+}
 
 
 
 const ListNotes: FC = () => {
+    getFromStorage()
 
-    const [notes, setNotes] = useState<INote[]>([]);
-    const [visible, setVisible] = useState<boolean>(false);
+    const [notes, setNotes] = useState<INote[]>(getFromStorage());
     const [currentNote, setCurrentNote] = useState<IFormObject>({ name: '', noteBody: '', category: '' });
-    const [visibleArchive, setVisibleArchive] = useState(false);
     const [editNoteId, setEditNoteId] = useState<number>(0);
-
-
 
     useEffect(() => {
         setTimeout(() => {
@@ -39,10 +48,10 @@ const ListNotes: FC = () => {
 
     function createNewNote(e: React.FormEvent) {
         e.preventDefault();
-        //перевіряємо чи це редашування існуючої нотатки, чи створення нової
+        //перевіряємо чи це редаuування існуючої нотатки, чи створення нової
 
         let indexForEdit;
-        notes.forEach( (el, index) => {
+        notes.forEach((el, index) => {
             if (el.id === editNoteId) {
                 indexForEdit = index;
             }
@@ -71,50 +80,40 @@ const ListNotes: FC = () => {
 
 
 
-return (
-    <div className={classes.table}>
-        <DefaultNotes setNotes={setNotes} notes={notes} />
-        {!notes.length
-            ?
-            null
-            : <Header setVisibleArchive={setVisibleArchive} visibleArchive={visibleArchive} 
-            setNotes={setNotes} notes={notes}
-            ></Header>}
+    return (
+        <div className={classes.table}>
+            <NoteProvider>
+                <DefaultNotes setNotes={setNotes} notes={notes} />
+                {!notes.length
+                    ?
+                    null
+                    : <Header
+                        setNotes={setNotes} notes={notes}
+                    ></Header>}
 
-        {notes.map((note => (
-            !note.archiveStatus ? <Note note={note} key={note.id} setNotes={setNotes}
-                notes={notes} currentNote={currentNote}
-                setVisible={setVisible} visible={visible}
-                setEditNoteId={setEditNoteId}
-            /> : null
-        )))}
+                {notes.map((note => (
+                    !note.archiveStatus ? <Note note={note} key={note.id} setNotes={setNotes}
+                        notes={notes} currentNote={currentNote}
+                        setEditNoteId={setEditNoteId}
+                    /> : null
+                )))}
+             
 
-        <MyModal setVisible={setVisible} visible={visible}>
-            <MyForm
-                currentNote={currentNote}
-                setCurrentNote={setCurrentNote}
-                createNewNote={createNewNote}
-            ></MyForm>
-        </MyModal>
-        <button className={classes.btnCreate} onClick={() => setVisible(true)}>Create Note</button>
-        {notes.length
-            ?
-            <button
-                className={classes.btnCreate}
-                onClick={() => setVisibleArchive(!visibleArchive)}
-                style={{ float: 'left' }}
-            >show/hide archive</button>
-            : null
-        }
-
-        <Archive notes={notes} visibleArchive={visibleArchive} setVisibleArchive={setVisibleArchive}
-            setVisible={setVisible} visible={visible}
-            currentNote={currentNote} setNotes={setNotes} 
-            setEditNoteId={setEditNoteId}
-            />
-
-    </div>
-)
+                <HeaderArchive notes={notes}></HeaderArchive>
+                <MyModal>
+                    <MyForm
+                        currentNote={currentNote}
+                        setCurrentNote={setCurrentNote}
+                        createNewNote={createNewNote}
+                    ></MyForm>
+                </MyModal>
+                <Archive notes={notes}
+                    currentNote={currentNote} setNotes={setNotes}
+                    setEditNoteId={setEditNoteId}
+                />
+            </NoteProvider>
+        </div>
+    )
 }
 
 export default ListNotes

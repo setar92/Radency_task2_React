@@ -3,15 +3,14 @@ import { INote } from '../types/types';
 import classes from '../css/table.module.css'
 import MyButton, { ButtonVariant } from "./UI/Buttons/RightButton";
 import CategoryIcon from "./UI/CategoryIcon/CategoryIcon";
-import { IFormObject } from '../types/types'
+import { IFormObject } from '../types/types';
+import {useNote} from './ContextNote'
 
 interface noteProps {
     note: INote;
     setNotes: (notes: INote[]) => void;
     notes: INote[];
     currentNote: IFormObject;
-    visible: boolean;
-    setVisible: (visible: boolean) => void;
     setEditNoteId: (id:number) => void;
 }
 
@@ -30,7 +29,11 @@ function getDatesFromBody(body: string) {
 
 
 
-const Note: FC<noteProps> = ({ note, setNotes, notes, currentNote, visible, setVisible, setEditNoteId }) => {
+const Note: FC<noteProps> = ({ note, setNotes, notes, currentNote,  setEditNoteId }) => {
+
+    const value = useNote();
+    const visible = value.visible;
+    const setVisible = value.setVisible;
 
    
 
@@ -56,7 +59,7 @@ const Note: FC<noteProps> = ({ note, setNotes, notes, currentNote, visible, setV
         if (!visible) {
             setVisible(true)
         }
-        currentNote.name = note.name;
+            currentNote.name = note.name;
             currentNote.noteBody = note.noteBody;
             currentNote.category = note.category; 
             setEditNoteId(note.id)

@@ -77,20 +77,15 @@ pre {
     border-radius: 5px;
     font-size: large;
     padding: 3px 16px;
-    float: right;
-    margin-top: 12px;
-   
+    float: right;   
 }
 
 /* Archive */
 .archive { 
-    border-radius: 10px;
-    margin-top: 50px;
-   
+    border-radius: 10px;   
 }
 .archive h1{
     text-align: center;
-    padding-top: 10px;
 }
 
 .archive.active{

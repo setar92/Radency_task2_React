@@ -1,4 +1,4 @@
-export interface IUser{
+export interface IUser {
     userId: number;
     id: number;
     title: string;
@@ -14,8 +14,14 @@ export interface INote {
     createdDate: string;
 }
 
-export interface IFormObject { 
+export interface IFormObject {
     name: string;
     noteBody: string;
     category: string;
+}
+
+export interface ICount {
+    Task: number,
+    Idea: number,
+    'Random Thought': number
 }

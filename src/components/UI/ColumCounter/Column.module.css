@@ -1,0 +1,60 @@
+.countColumn {
+    height: 50px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    color: #747780;
+    border-radius: 6px;
+    background-color: #e8eaf6;
+}
+
+
+  
+   
+
+.countColumn div { 
+    
+    align-items: center;
+    padding-left: 10px;
+    
+}
+.countColumn div:first-child{
+    min-width: 3%;
+  
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    display: inline-block; 
+    padding-left: 6px;
+    padding-right: 6px;
+  
+   
+    height: 35px;
+    line-height: 35px;   
+}
+
+
+
+.headerCounter{
+    background-color: #999999;
+    min-height: 35px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+    line-height: 35px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+
+.headerCounter div:nth-child(1) {
+    min-width: 5%;
+}
+
+.divForButtons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    margin-top: 10px;
+}

@@ -1,16 +1,21 @@
 import React, { FC } from "react";
 import classes from './Header.module.css';
 import {INote} from '../../../types/types'
+import {useNote} from '../../ContextNote'
 
 interface HeaderProps {
-    setVisibleArchive: (ar: boolean) => void;
-    visibleArchive: boolean;
     setNotes: (notes: INote[]) => void;
     notes: INote[];
 }
 
 
-const Header: FC<HeaderProps> = ({ setVisibleArchive, visibleArchive, setNotes, notes }) => {
+const Header: FC<HeaderProps> = ({  setNotes, notes }) => {
+
+    let value = useNote();
+    let visibleArchive = value.visibleArchive;
+    let setVisibleArchive= value.setVisibleArchive;
+
+
     function deleteAll() {
        if (window.confirm('really delete all notes?')) {
         setNotes([]); 
@@ -30,7 +35,9 @@ const Header: FC<HeaderProps> = ({ setVisibleArchive, visibleArchive, setNotes, 
             <div><button onClick={()=>{setVisibleArchive(!visibleArchive)}}>
                 <i className="large material-icons" title="show/hide archive">archive</i>
             </button></div>
-            <div><button onClick={()=> deleteAll()}>
+            <div><button onClick={()=> {deleteAll()
+             if (visibleArchive) setVisibleArchive(!visibleArchive)
+            }}>
                 <i className="large material-icons" title="delete">delete</i>
             </button></div>
 

@@ -1,14 +1,17 @@
 import React, { FC } from "react";
 import cl from './MyModal.module.css'
-
+import { useNote } from "../../ContextNote"
 
 interface MyModalProps {
     children: React.ReactNode;
-    setVisible: (visible: boolean) => void;
-    visible: boolean;
 }
 
-const MyModal: FC<MyModalProps> = ({ children, setVisible, visible}) => {
+const MyModal: FC<MyModalProps> = ({ children}) => {
+
+    const value = useNote();
+    const visible = value.visible;
+    const setVisible = value.setVisible;
+
 
     const classVisible = [cl.myModal];
     if (visible) {

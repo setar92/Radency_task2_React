@@ -10,7 +10,7 @@ const App: FC = () => {
 
   return (
     <div>
-      <ListNotes />
+          <ListNotes />
     </div>
   );
 };
